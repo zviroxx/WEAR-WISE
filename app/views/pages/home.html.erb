@@ -3,7 +3,11 @@
       <h1>WEAR WISE</strong>!</h1>
       <p>Smarter pick. Better fits. 😎</p>
       <div class="btn btn-outline-success">
-      <%= link_to "Your outfits"%>
+      <%# <% if user.outfits.count == 0 %>
+        <%= button_to "Add outfit", chats_path, method: :post%>
+      <%# <% else %>
+        <%# <%= link_to "My outfits", %>
+      <%# <% end %>
     </div>
   </div>
 </div>
