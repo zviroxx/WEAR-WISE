@@ -43,3 +43,94 @@
 body {
   background-color: lavender;
 }
+
+/* PROFILE PAGE */
+
+body:has(.profile-page),
+body:has(.edit-profile-page) {
+  background-color: lavender;
+}
+
+.profile-page,
+.edit-profile-page {
+  max-width: 650px;
+  margin: 70px auto;
+  padding: 45px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.profile-page h2,
+.edit-profile-page h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #252525;
+  margin-bottom: 30px;
+}
+
+.profile-page p {
+  padding: 15px 0;
+  border-bottom: 1px solid #eeeef3;
+  color: #555;
+  font-size: 15px;
+}
+
+.profile-page strong {
+  color: #292929;
+}
+
+.edit-profile-page h3 {
+  font-size: 20px;
+  margin: 30px 0 10px;
+  color: #292929;
+}
+
+.edit-profile-page .form-control {
+  border: 1px solid #e5e3ed;
+  border-radius: 9px;
+  padding: 12px;
+  box-shadow: none;
+}
+
+.edit-profile-page .form-control:focus {
+  border-color: #aaa5dc;
+  box-shadow: 0 0 0 3px rgba(170, 165, 220, 0.15);
+}
+
+.edit-profile-page hr {
+  margin: 30px 0;
+  border-color: #eeeef3;
+}
+
+.profile-page a,
+.edit-profile-page a {
+  color: #8986b5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.profile-page a:hover,
+.edit-profile-page a:hover {
+  color: #65618f;
+}
+
+.profile-page a:not(:hover) {
+  transition: color 0.2s ease;
+}
+
+.edit-profile-page .btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 15px;
+  background-color: #292929;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.edit-profile-page .btn:hover {
+  background-color: lavender;
+}

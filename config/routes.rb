@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "profile", to: "pages#profile"
+  get "profile/edit", to: "pages#edit_profile", as: :edit_profile
+  patch "profile", to: "pages#update_profile"
 end
