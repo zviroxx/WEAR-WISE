@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   patch "profile", to: "pages#update_profile"
 
   resources :outfits, only: [:index, :show, :create]
-  resources :chats, only: [:create, :show]
+  resources :chats, only: [:create, :show] do
+    resources :messages, only: [:create]
+  end
 end
