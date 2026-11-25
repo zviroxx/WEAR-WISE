@@ -4,7 +4,7 @@
       <p>Smarter pick. Better fits. 😎</p>
       <div class="btn btn-outline-success">
       <%# <% if user.outfits.count == 0 %>
-        <%= button_to "Add outfit", chats_path, method: :post%>
+
       <%# <% else %>
         <%# <%= link_to "My outfits", %>
       <%# <% end %>
@@ -20,7 +20,7 @@
         <div class="card-body">
           <h5 class="card-title">Placeholder</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Placeholder</a>
+          <%= button_to "Add outfit", chats_path, method: :post%>
         </div>
       </div>
       <div class="card" style="width: 18rem;">
