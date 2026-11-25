@@ -2,17 +2,15 @@
   <div class="container postion-absolute">
       <h1>WEAR WISE</strong>!</h1>
       <p>Smarter pick. Better fits.🎀</p>
-      <div class="btn btn-outline-success">
-<<<<<<< HEAD
       <%# <% if user.outfits.count == 0 %>
-
+      <% if user_signed_in? %>
+      <div class="btn btn-outline-success">
+        <%= link_to "Your outfits", outfits_path%>
+      </div>
+      <% end %>
       <%# <% else %>
         <%# <%= link_to "My outfits", %>
       <%# <% end %>
-=======
-      <%= link_to "Your outfits", outfits_path%>
->>>>>>> c04e5b5e8542b0a3d7def76d0f606f8c3b698c15
-    </div>
   </div>
 </div>
 <br>
