@@ -1,0 +1,15 @@
+.normal-btn {
+  background: lavender;
+  color: #6B4EFF;
+  border: 1px solid #8c77e0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.normal-btn:hover {
+  background: #D2C5FF;
+  color: #4F35C9;
+}
