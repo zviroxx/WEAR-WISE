@@ -1,0 +1,17 @@
+<div class="container edit-outfit-page">
+  <h1>Edit Outfit</h1>
+  <p>Make changes to your outfit</p>
+  <%= simple_form_for @outfit do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, label: "Outfit name" %>
+    <%= f.input :season,
+                label: "Season",
+                collection: ["Spring", "Summer", "Autumn", "Winter"],
+                prompt: "Select a season" %>
+    <%= f.input :details,
+                label: "Outfit details",
+                input_html: {rows: 5} %>
+    <%= f.button :submit, "Save changes" %>
+  <% end %>
+  <%= link_to "Cancel", outfit_path(@outfit) %>
+</div>
