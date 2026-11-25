@@ -16,6 +16,19 @@ class OutfitsController < ApplicationController
     end
   end
 
+  def edit
+    @outfit = current_user.outfits.find(params[:id])
+  end
+
+  def update
+    @outfit = current_user.outfits.find(params[:id])
+    if @outfit.update(outfit_params)
+      redirect_to outfit_path(@outfit), notice: "Outfit updated successfully!"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def outfit_params
     params.require(:outfit).permit(:name, :season, :image, :details)
