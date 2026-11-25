@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="outfits-header">
+    <h1>My Saved Outfits ⭐️</h1>
+    <p>Your favourite looks, all in one place</p>
+  </div>
+  <div class="outfits-grid">
+    <% @outfits.each do |outfit| %>
+      <div class="outfit-card">
+        <div class="outfit-card-content">
+          <h3><%= outfit.name %></h3>
+          <p><%= outfit.season %></p>
+          <%= link_to "View outfit", outfit_path(outfit), class: "outfit-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% if @outfits.empty? %>
+    <div class="empty-outfits">
+      <h3>No saved outfits yet</h3>
+      <p>Your saved outfits will appear here.</p>
+    </div>
+  <% end %>
+  <%= link_to "Back to Home Page", root_path %>
+</div>
