@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
 
       @assistant_message = @chat.messages.create(role: "assistant", content: response.content)
-      @chat.generate_title_from_first_message
+
 
       respond_to do |format|
         format.turbo_stream # renders `app/views/messages/create.turbo_stream.erb`
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
   private
 
   def instructions
-    [SYSTEM_PROMPT, outfit_context].compact.join("\n\n")
+    [SYSTEM_PROMPT].compact.join("\n\n")
   end
 
   def message_params
