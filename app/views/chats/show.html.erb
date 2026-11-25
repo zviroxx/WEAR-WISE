@@ -1,9 +1,9 @@
-<div class="container mt-3 d-flex justify-content-center bg-white flex-column" style="padding: 1em; border-radius:10px;">
-  <h1>New chat</h1>
-  <div style="height: 80vh;">
-    Placeholder --> Messages Histories
+<div class="container mt-3 bg-white" style="border-radius: 20px;">
+  <div id="messages">
+    <%= render "messages/messages", messages: @chat.messages %>
   </div>
-    <div class="border border-black border-2" style="padding: 1em;">
-      Placeholder --> Input
-    </div>
+
+  <div id="new_message_container">
+    <%= render "messages/form", chat: @chat, message: @message %>
+  </div>
 </div>
