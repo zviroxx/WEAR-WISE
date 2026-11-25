@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
   private
 
   def instructions
-    [SYSTEM_PROMPT, outfit_context].compact.join("\n\n")
+    [SYSTEM_PROMPT].compact.join("\n\n")
   end
 
   def message_params
