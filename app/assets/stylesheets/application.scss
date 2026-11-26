@@ -223,3 +223,18 @@ body:has(.edit-profile-page) {
   border-radius: 16px;
   margin: 25px 0;
 }
+
+/* Create and Edit Outfit pages */
+
+.edit-outfit-page {
+  margin-top: 45px;
+  margin-bottom: 60px;
+}
+
+.edit-outfit-page h1 {
+  margin-bottom: 5px;
+}
+
+.edit-outfit-page > p {
+  margin-bottom: 25px;
+}
