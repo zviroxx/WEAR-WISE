@@ -1,0 +1,15 @@
+<%= simple_form_for @outfit do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Outfit name" %>
+  <%= f.input :season,
+              label: "Season",
+              collection: ["Spring", "Summer", "Autumn", "Winter"],
+              prompt: "Select a season" %>
+  <%= f.input :details,
+              label: "Outfit details",
+              input_html: { rows: 5 } %>
+  <div class="outfit-form-actions">
+    <%= f.button :submit, "Save Outfit", class: "normal-btn" %>
+    <%= link_to "Cancel", cancel_path, class: "normal-btn" %>
+  </div>
+<% end %>
