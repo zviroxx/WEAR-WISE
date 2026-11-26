@@ -17,10 +17,7 @@
       <%= f.input :last_name, label: "Last name" %>
       <hr>
       <h3>Change password</h3>
-      <%= f.input :current_password,
-                  label: "Current password",
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
+
       <%= f.input :password,
                   label: "New password",
                   required: false,
@@ -29,6 +26,12 @@
                   label: "Confirm new password",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
+      <hr>
+      <h3>Confirm that is you </h3>
+      <%= f.input :current_password,
+                  label: "Current password",
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Save changes" %>

@@ -9,6 +9,7 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/persocard";
 @import "pages/index";
 
 // Specific CSS for your home-page
@@ -178,7 +179,6 @@ body:has(.edit-profile-page) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
-  margin-bottom: 60px;
 }
 
 .outfit-card {

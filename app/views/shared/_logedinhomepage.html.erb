@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center container">
+    <br>
+    <hr>
+    <div class="d-flex ">
+      <div>
+      <div class="perso-card-right">
+        <div class="right-path p-3">
+          <h5>My wardrobe</h5>
+          <p> Checkout all your outfits. </p>
+          <%= link_to "My wardrobe", outfits_path, class: "btn btn-outline-success" %>
+        </div>
+        <div class="vl"></div>
+        <div class="left-path d-flex justify-content-center justify-center align-items-center p-3"><%= link_to image_tag("https://i.imgur.com/efp6cXg.png", class: "cardimage"), outfits_path  %></div>
+      </div>
+      <br>
+      <div class="perso-card-right">
+        <div class="right-path p-3">
+          <h5>New outfit</h5>
+          <p> Create a new outfit without AI help. </p>
+          <%= link_to "Add outfit", new_outfit_path, class: "btn btn-outline-success" %>
+        </div>
+        <div class="vl"></div>
+        <div class="left-path d-flex justify-content-center justify-center align-items-center p-3"><%= link_to image_tag("https://i.imgur.com/Yh6avnq.png", class: "cardimage"), new_outfit_path %></div>
+      </div>
+      </div>
+      </div>
+
+      <div class="big-card d-flex justify-content-center container row">
+
+        <img src="https://i.imgur.com/iPCz4NR.png" alt="ai-feature">
+        <h4>Wear Wise AI</h4>
+        <p>Create an outfit with the help of AI with his questions 😎</p>
+        <%= link_to "Create AI chat", chats_path,class:"btn btn-success"  %>
+      </div>
+
+</div>
