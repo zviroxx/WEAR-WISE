@@ -9,6 +9,7 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/persocard";
 @import "pages/index";
 
 // Specific CSS for your home-page
@@ -59,6 +60,8 @@ body:has(.edit-profile-page) {
 
 .profile-page,
 .edit-profile-page {
+  display: flex;
+  flex-direction: column;
   max-width: 650px;
   margin: 70px auto;
   padding: 45px;
@@ -69,6 +72,9 @@ body:has(.edit-profile-page) {
 
 .profile-page h2,
 .edit-profile-page h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
   font-size: 30px;
   font-weight: 700;
   color: #252525;
@@ -141,6 +147,17 @@ body:has(.edit-profile-page) {
   background-color: lavender;
 }
 
+.edit-profile-page .form-inputs {
+  width: 100%;
+  text-align: left;
+}
+
+.edit-profile-page .form-actions {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+}
+
 /* SAVED OUTFITS */
 
 .outfits-header {
@@ -162,7 +179,6 @@ body:has(.edit-profile-page) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
-  margin-bottom: 60px;
 }
 
 .outfit-card {
@@ -222,4 +238,19 @@ body:has(.edit-profile-page) {
   object-fit: cover;
   border-radius: 16px;
   margin: 25px 0;
+}
+
+/* Create and Edit Outfit pages */
+
+.edit-outfit-page {
+  margin-top: 45px;
+  margin-bottom: 60px;
+}
+
+.edit-outfit-page h1 {
+  margin-bottom: 5px;
+}
+
+.edit-outfit-page > p {
+  margin-bottom: 25px;
 }

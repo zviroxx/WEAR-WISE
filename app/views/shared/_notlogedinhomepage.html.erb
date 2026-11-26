@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between container">
+  <div class="d-flex lg-8">
+    <div class="cards">
+      <div class="outfit-card" style="width: 18rem;">
+        <img src="https://i.imgur.com/efp6cXg.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">My wardrobe</h5>
+          <p class="card-text">You can check your created outfits in the WearWise web.</p>
+          <%= link_to "My collection", outfits_path, class: "normal-btn" %>
+        </div>
+      </div>
+      <div class="outfit-card" style="width: 18rem;">
+        <img src="https://i.imgur.com/Yh6avnq.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Create an Outfit</h5>
+          <p class="card-text">Use our build in AI to assist you getting the best out of your wardrobe.</p>
+          <%= button_to "Add outfit", new_outfit_path, method: :post, class: "normal-btn"%><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if user_signed_in? == false %>
+    <div class="d-flex lg-4 row align-items-start bg-white border-3 container mt-3 p-3" style="border-radius: 10px; margin-left:20px;">
+      <%= render "devise/sessions/form", resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
+    </div>
+  <% else %>
+    <%=  render "shared/alter"%>
+  <% end %>
+</div>

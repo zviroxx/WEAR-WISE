@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "profile/edit", to: "pages#edit_profile", as: :edit_profile
   patch "profile", to: "pages#update_profile"
 
-  resources :outfits, only: [:index, :show, :create, :edit, :destroy, :update]
+  resources :outfits, only: [:index, :show, :new, :create, :edit, :destroy, :update]
   resources :chats, only: [:create, :show] do
     resources :messages, only: [:create]
   end

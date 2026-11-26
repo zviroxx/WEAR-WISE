@@ -1,5 +1,10 @@
 <div class="profile-page">
   <h2>My Profile</h2>
+  <% if @user.profile_picture.attached? %>
+    <%= image_tag @user.profile_picture, class: "profile-picture" %>
+  <% else %>
+    <%= image_tag "default_profile.jpg", class: "profile-picture" %>
+  <% end %>
   <p><strong>First name:</strong> <%= @user.first_name %></p>
   <p><strong>Last name:</strong> <%= @user.last_name %></p>
   <p><strong>Email:</strong> <%= @user.email %></p>
