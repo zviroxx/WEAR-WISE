@@ -60,6 +60,8 @@ body:has(.edit-profile-page) {
 
 .profile-page,
 .edit-profile-page {
+  display: flex;
+  flex-direction: column;
   max-width: 650px;
   margin: 70px auto;
   padding: 45px;
@@ -70,6 +72,9 @@ body:has(.edit-profile-page) {
 
 .profile-page h2,
 .edit-profile-page h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
   font-size: 30px;
   font-weight: 700;
   color: #252525;
@@ -140,6 +145,17 @@ body:has(.edit-profile-page) {
 
 .edit-profile-page .btn:hover {
   background-color: lavender;
+}
+
+.edit-profile-page .form-inputs {
+  width: 100%;
+  text-align: left;
+}
+
+.edit-profile-page .form-actions {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
 }
 
 /* SAVED OUTFITS */

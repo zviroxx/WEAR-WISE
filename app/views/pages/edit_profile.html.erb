@@ -3,6 +3,16 @@
   <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
+      <% if @user.profile_picture.attached? %>
+        <%= image_tag @user.profile_picture, class: "avatar" %>
+      <% end %>
+      <%= f.input :profile_picture,
+            as: :file,
+            label: "Profile Picture",
+            input_html: {
+              accept: "image/*",
+              include_hidden: false
+            } %>
       <%= f.input :first_name, label: "First name" %>
       <%= f.input :last_name, label: "Last name" %>
       <hr>
@@ -12,7 +22,6 @@
                   label: "New password",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
-
       <%= f.input :password_confirmation,
                   label: "Confirm new password",
                   required: false,
