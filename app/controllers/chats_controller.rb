@@ -7,14 +7,13 @@ class ChatsController < ApplicationController
       redirect_to chat_path(@chat)
       Rails.logger.info "Chat #{@chat.id} was saved!"
     else
-      Rails.logger.info "Chat #{@chat.current_user} was saved!"
-      Rails.logger.error "Error #{@chat.errors.full_messages}"
+      Rails.logger.error "Chat failed to save: #{@chat.errors.full_messages}"
+      render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    # @chat    = current_user.chats.find(params[:id])
-    @chat = Chat.find(params[:id])
+    @chat = current_user.chats.find(params[:id])
     @message = Message.new
   end
 end
