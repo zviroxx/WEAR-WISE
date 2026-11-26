@@ -14,6 +14,15 @@ class OutfitsController < ApplicationController
   def create
     @outfit = current_user.outfits.new(outfit_params)
     if @outfit.save
+      image = RubyLLM.paint(
+        "Edit the picture of this person with this dress code: #{@outfit.details}",
+        model: "gpt-image-2",
+        with: current_user.profile_picture)
+      @outfit.photo.attach(
+          io: StringIO.new(image.to_blob),
+          filename: "outfit.png",
+          content_type: image.mime_type
+        )
       redirect_to outfits_path, notice: "Outfit saved!"
     else
       render :new, status: :unprocessable_entity

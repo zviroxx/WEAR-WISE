@@ -1,5 +1,6 @@
 <div class="container outfit-show">
   <h1><%= @outfit.name %></h1>
+  <%= cl_image_tag(@outfit.photo.key, height:250, width:250) %>
   <p><strong>Season:</strong> <%= @outfit.season %></p>
   <h3>Outfit details</h3>
   <p><%= @outfit.details %></p>
