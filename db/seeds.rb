@@ -15,7 +15,12 @@ user1 = User.find_or_create_by!(email: "megui.ann@gmail.com") do |u|
   u.password_confirmation = "123456"
 end
 
-outfit2= Outfit.find_or_create_by!(name: "Night out look", season: "Autumn", details: "Black top, Black skirt, Black boots.", image: "123", user: user1);
-puts outfit2
+outfit1= Outfit.find_or_create_by!(name: "Night out look", season: "Autumn", details: "Burgundy top, Black skirt, Black boots, Black leather jacket.", image: "123", user: user1);
 
-chat1 = Chat.find_or_create_by!(user: user1, outfit: outfit2)
+outfit2= Outfit.find_or_create_by!(name: "Casual look for drinks", season: "Summer", details: "Sparkle jeans, Pink Top, Brown sandals.", image: "123", user: user1);
+
+outfit3= Outfit.find_or_create_by!(name: "Hiking look", season: "Winter", details: "Bege pants, White shirt, White jacket, Hiking boots.", image: "123", user: user1);
+
+chat1 = Chat.find_or_create_by!(user: user1, outfit: outfit1)
+chat2 = Chat.find_or_create_by!(user: user1, outfit: outfit2)
+chat3 = Chat.find_or_create_by!(user: user1, outfit: outfit3)

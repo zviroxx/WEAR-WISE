@@ -13,3 +13,26 @@
   background: #D2C5FF;
   color: #4F35C9;
 }
+
+/* Style of the buttons to be the same */
+
+.outfit-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.outfit-form-actions .normal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 38px;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: none;
+  margin: 0;
+}
