@@ -10,41 +10,9 @@
   </div>
 </div>
 <br>
-<div class="d-flex justify-content-between container">
-  <div class="d-flex lg-8">
-    <div class="cards">
-      <div class="outfit-card" style="width: 18rem;">
-        <img src="https://coldcultureworldwide.com/cdn/shop/files/script-zip-hoodie-light-grey-227447.jpg?v=1791559183&width=1000" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Your outfits</h5>
-          <p class="card-text">This is your personal collection. Add, edit or delete your outfits here.</p>
-          <%= link_to "My collection", outfits_path, class: "normal-btn" %>
-        </div>
-      </div>
-      <div class="outfit-card" style="width: 18rem;">
-        <img src="https://coldcultureworldwide.com/cdn/shop/files/down-to-luck-hoodie-black-and-white-4971897.jpg?v=1764859580&width=1000" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Create an Outfit</h5>
-          <p class="card-text">Use our build in AI to assist you getting the best out of your wardrobe.</p>
-          <%= button_to "Add outfit", chats_path, method: :post, class: "normal-btn"%><br>
-        </div>
-      </div>
-      <div class="outfit-card" style="width: 18rem;">
-        <img src="https://coldcultureworldwide.com/cdn/shop/files/script-longsleeve-tee-white-7500310.png?v=1757353690&width=1000" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Placeholder</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="normal-btn">Placeholder</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% if user_signed_in? == false %>
-    <div class="d-flex lg-4 row align-items-start bg-white border-3 container mt-3 p-3" style="border-radius: 10px; margin-left:20px;">
-      <%= render "devise/sessions/form", resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
-    </div>
-  <% else %>
-    <%=  render "shared/alter"%>
-  <% end %>
 
-</div>
+<% if user_signed_in? == false %>
+  <%= render "shared/notlogedinhomepage" %>
+<% else %>
+  <%= render "shared/logedinhomepage" %>
+<% end %>

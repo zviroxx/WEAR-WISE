@@ -1,0 +1,48 @@
+
+.vl {
+  border-left: 2px solid rgb(113, 113, 113);
+  height: 100%;
+}
+.perso-card-right {
+  width: 40vh;
+  height: 20vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  .cardimage {
+    width: 12vh;
+  }
+
+  .left-path {
+    width: 29%;
+
+  }
+  .right-path {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h5 {
+    color:black;
+  }
+  p {
+    color:rgb(99, 99, 99)
+  }
+}
+
+.big-card {
+  width: 30vh;
+  height: 42.5vh;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 100%;
+  }
+  margin-left: 5vh;
+}
