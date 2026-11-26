@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  after_create_commit :broadcast_append_to_chat
   MAX_USER_MESSAGES = 10
 
   belongs_to :chat
@@ -11,5 +12,9 @@ class Message < ApplicationRecord
     return unless chat.messages.where(role: "user").count >= MAX_USER_MESSAGES
 
     errors.add(:content, "You can only send #{MAX_USER_MESSAGES} messages per chat.")
+  end
+
+  def broadcast_append_to_chat
+    broadcast_append_to(chat, target: "messages", partial: "messages/message", locals: { message: self })
   end
 end

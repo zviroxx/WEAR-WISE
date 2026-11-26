@@ -1,7 +1,6 @@
 <div id="new_message_container">
   <%= simple_form_for [@chat, @message] do |f| %>
-    <%= f.input :content, label: "Ask a question", required: true, placeholder: "How should I get started with the challenge?" %>
-    <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
+    <%= f.input :content, label: "Ask a question", required: true, placeholder: "How can I assist you in choosing your outfit?" %>
+    <%= f.button :submit, 'Ask OAI', class: 'normal-btn' %>
   <% end %>
-  <h1>hello</h1>
 </div>

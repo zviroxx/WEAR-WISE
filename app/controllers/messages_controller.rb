@@ -9,14 +9,16 @@ class MessagesController < ApplicationController
     @message.role = "user"
 
     if @message.save
-      @ruby_llm_chat = RubyLLM.chat
-      response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
+      @assistant_message = Message.create(role: "assistant", content: "", chat: @chat)
 
-      @assistant_message = @chat.messages.create(role: "assistant", content: response.content)
+      response = ask_llm
 
+      @assistant_message.update(content: response.content)
+      broadcast_replace(@assistant_message)
+      @chat.generate_title_from_first_message
 
       respond_to do |format|
-        format.turbo_stream # renders `app/views/messages/create.turbo_stream.erb`
+        format.turbo_stream
         format.html { redirect_to chat_path(@chat) }
       end
     else
@@ -38,5 +40,30 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content)
+  end
+
+  def build_conversation_history
+    @chat.messages.order(:created_at).each do |message|
+      next if message.content.blank?
+
+      @ruby_llm_chat.add_message(role: message.role, content: message.content)
+    end
+  end
+
+  def ask_llm
+    @ruby_llm_chat = RubyLLM.chat.with_instructions(instructions)
+    build_conversation_history
+
+    @ruby_llm_chat.complete do |chunk|
+      next if chunk.content.blank?
+
+      @assistant_message.content += chunk.content
+      broadcast_replace(@assistant_message)
+    end
+  end
+
+  def broadcast_replace(message)
+    Turbo::StreamsChannel.broadcast_replace_to(@chat, target: helpers.dom_id(message), partial: "messages/message",
+                                                      locals: { message: message })
   end
 end

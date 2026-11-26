@@ -1,4 +1,8 @@
-<%= simple_form_for [chat, message] do |f| %>
-  <%= f.input :content, label: "Ask a question", required: true, placeholder: "How should I get started with the challenge?" %>
-  <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
+<%= simple_form_for [chat, message], html: { class: "chat-form-inner" } do |f| %>
+  <%= f.input :content, label: "Ask a question", required: true, placeholder: "How can I assist you in choosing your outfit?" %>
+
+  <div class="form-buttons">
+    <%= f.button :submit, 'Ask OAI', class: 'normal-btn', data: { turbo_submits_with: "Thinking..." } %>
+    <%= link_to "Home", root_path, class: "normal-btn" %>
+  </div>
 <% end %>
