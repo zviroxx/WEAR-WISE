@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are a Pro modern Stylist.\n\nI am a person who cannot figure out what to wear.\n\nHelp me break down my problem and choose some clothes and color to style.\n\nAnswer concisely in Markdown."
-
+  before_action :authenticate_user!
   def create
     @chat = current_user.chats.find(params[:chat_id])
     @outfit = @chat.outfit
