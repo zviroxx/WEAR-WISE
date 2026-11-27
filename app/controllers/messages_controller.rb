@@ -1,5 +1,14 @@
 class MessagesController < ApplicationController
-  SYSTEM_PROMPT = "You are a Pro modern Stylist.\n\nI am a person who cannot figure out what to wear.\n\nHelp me break down my problem and choose some clothes and color to style.\n\nAnswer concisely in Markdown."
+  SYSTEM_PROMPT = <<~PROMPT
+
+    You are a Pro modern Stylist.\n\nI am a person who cannot figure out what to wear.\n\nHelp me break down my problem and choose some clothes and color to style.\n\nAnswer concisely in Markdown.
+  PROMPT
+
+  PROMBT_JSON = <<~PROMPT
+    Return a valid JSON, with no extra text, in this format:
+    {"name": "...", "season": "...", "details": "..."}
+    Replace the "..." values with what best fits each key, based on the conversation.\n\nFor season only return one of these: winter, summer, spring, autumn
+  PROMPT
 
   def create
     @chat = current_user.chats.find(params[:chat_id])
@@ -15,6 +24,14 @@ class MessagesController < ApplicationController
 
       @assistant_message.update(content: response.content)
       broadcast_replace(@assistant_message)
+
+      response_json = ask_llm_for_json
+      data = JOSN.parse(response_json)
+      @outfit.update(name: data[:name], season: data[:season], details: data[:details])
+
+      # call anouther ask_llm to create the JSON with different instructions
+      # update the outfit instance
+
       @chat.generate_title_from_first_message
 
       respond_to do |format|
@@ -36,6 +53,10 @@ class MessagesController < ApplicationController
 
   def instructions
     [SYSTEM_PROMPT].compact.join("\n\n")
+  end
+
+  def instructions_for_json
+    [PROMT_JSON].compact.join("\n\n")
   end
 
   def message_params
@@ -60,6 +81,11 @@ class MessagesController < ApplicationController
       @assistant_message.content += chunk.content
       broadcast_replace(@assistant_message)
     end
+  end
+
+  def ask_llm_for_json
+    @ruby_llm_chat = RubyLLM.chat.with_instructions(instructions_for_josn)
+    build_conversation_history
   end
 
   def broadcast_replace(message)
