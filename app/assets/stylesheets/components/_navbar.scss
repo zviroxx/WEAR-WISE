@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(154, 154, 218);
+  background: white;
+  padding: 10px 24px;
+  height: 70px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,7 +10,18 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 80px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.dashboard-card img.ai-logo {
+  width: 250px !important;
+  height: 190px !important;
+  max-width: none !important;
+  object-fit: contain;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .navbar-avatar {
