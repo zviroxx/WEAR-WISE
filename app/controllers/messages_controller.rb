@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
     Replace the "..." values with what best fits each key, based on the conversation.\n\nFor season only return one of these: winter, summer, spring, autumn
   PROMPT
 
+  before_action :authenticate_user!
   def create
     @chat = current_user.chats.find(params[:chat_id])
     @outfit = @chat.outfit

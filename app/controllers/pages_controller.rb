@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, only: %i[edit_profile profile]
   def home
   end
 
@@ -21,7 +22,9 @@ class PagesController < ApplicationController
   end
 
   private
+
   def profile_params
-    params.require(:user).permit(:first_name, :last_name, :password, :profile_picture, :current_password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :password, :profile_picture, :current_password,
+                                 :password_confirmation)
   end
 end
