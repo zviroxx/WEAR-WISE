@@ -4,6 +4,6 @@
   <div class="form-buttons">
     <%= f.button :submit, 'Ask OAI', class: 'normal-btn', data: { turbo_submits_with: "Thinking..." } %>
     <%= link_to "Home", root_path, class: "normal-btn" %>
-    <%= link_to "Create Outfit", outfit_path(outfit), class: "normal-btn"%>
+    <%= link_to "Create Outfit", outfit_path(@outfit, update_image: true), class: "normal-btn"%>
   </div>
 <% end %>
