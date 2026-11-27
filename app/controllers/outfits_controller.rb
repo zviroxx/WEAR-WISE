@@ -6,6 +6,7 @@ class OutfitsController < ApplicationController
   end
 
   def show
+    generate_image if params[:update_image] == "true"
   end
 
   def new
@@ -15,16 +16,7 @@ class OutfitsController < ApplicationController
   def create
     @outfit = current_user.outfits.new(outfit_params)
     if @outfit.save
-      image = RubyLLM.paint(
-        "Edit the picture of this person with this dress code: #{@outfit.details}",
-        model: "gpt-image-2",
-        with: current_user.profile_picture
-      )
-      @outfit.photo.attach(
-        io: StringIO.new(image.to_blob),
-        filename: "outfit.png",
-        content_type: image.mime_type
-      )
+      generate_image
       redirect_to outfits_path, notice: "Outfit saved!"
     else
       render :new, status: :unprocessable_entity
@@ -57,5 +49,18 @@ class OutfitsController < ApplicationController
 
   def set_outfit
     @outfit = current_user.outfits.find(params[:id])
+  end
+
+  def generate_image
+    image = RubyLLM.paint(
+      "Edit the picture of this person with this dress code: #{@outfit.details}",
+      model: "gpt-image-2",
+      with: current_user.profile_picture
+    )
+    @outfit.photo.attach(
+      io: StringIO.new(image.to_blob),
+      filename: "outfit.png",
+      content_type: image.mime_type
+    )
   end
 end

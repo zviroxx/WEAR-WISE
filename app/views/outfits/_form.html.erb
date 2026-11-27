@@ -10,6 +10,6 @@
               input_html: { rows: 5 } %>
   <div class="outfit-form-actions">
     <%= f.button :submit, "Save Outfit", class: "normal-btn" %>
-    <%= link_to "Cancel", cancel_path, class: "normal-btn" %>
+    <%= link_to "Cancel", outfit_path(@outfit), class: "normal-btn" %>
   </div>
 <% end %>
