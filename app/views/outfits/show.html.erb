@@ -1,6 +1,8 @@
 <div class="container outfit-show">
-  <h1><%= @outfit.name %></h1>
+    <h1><%= @outfit.name %></h1>
+  <% if @outfit.photo.attached? %>
   <%= cl_image_tag(@outfit.photo.key, height:250, width:250) %>
+  <% end %>
   <p><strong>Season:</strong> <%= @outfit.season %></p>
   <h3>Outfit details</h3>
   <p><%= @outfit.details %></p>
@@ -8,5 +10,5 @@
   <%= link_to "Edit", edit_outfit_path(@outfit), class: "normal-btn" %>
   <%= link_to "Delete", outfit_path(@outfit),
           class: "normal-btn",
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure? \n\nThese changes cannot be reversed" } %>
 </div>
