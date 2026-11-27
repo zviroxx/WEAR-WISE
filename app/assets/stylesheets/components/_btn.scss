@@ -14,6 +14,25 @@
   color: #4F35C9;
 }
 
+.normal-btn-home {
+  background: lavender;
+  color: #6B4EFF;
+  border: 1px solid #8c77e0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  display: inline-block;
+}
+
+.normal-btn-home:hover {
+  background: #D2C5FF;
+  color: #4F35C9;
+}
+
 /* Style of the buttons to be the same */
 
 .outfit-form-actions {
