@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   PROMPT
 
   PROMBT_JSON = <<~PROMPT
-    Return a valid JSON, with no extra text, in this format:
+    Return ONLY a valid JSON, with no extra text, in this format:
     {"name": "...", "season": "...", "details": "..."}
     Replace the "..." values with what best fits each key, based on the conversation.\n\nFor season only return one of these: winter, summer, spring, autumn
   PROMPT
@@ -26,9 +26,7 @@ class MessagesController < ApplicationController
       @assistant_message.update(content: response.content)
       broadcast_replace(@assistant_message)
 
-      response_json = ask_llm_for_json
-      data = JOSN.parse(response_json)
-      @outfit.update(name: data[:name], season: data[:season], details: data[:details])
+      update_outfit
 
       # call anouther ask_llm to create the JSON with different instructions
       # update the outfit instance
@@ -57,7 +55,13 @@ class MessagesController < ApplicationController
   end
 
   def instructions_for_json
-    [PROMT_JSON].compact.join("\n\n")
+    [PROMBT_JSON].compact.join("\n\n")
+  end
+
+  def update_outfit
+    response_json = ask_llm_for_json
+    data = JSON.parse(response_json)
+    @outfit.update(name: data["name"], season: data["season"], details: data["details"])
   end
 
   def message_params
@@ -69,6 +73,14 @@ class MessagesController < ApplicationController
       next if message.content.blank?
 
       @ruby_llm_chat.add_message(role: message.role, content: message.content)
+    end
+  end
+
+  def build_conversation_history_json(chat_json)
+    @chat.messages.order(:created_at).each do |message|
+      next if message.content.blank?
+
+      chat_json.add_message(role: message.role, content: message.content)
     end
   end
 
@@ -85,8 +97,10 @@ class MessagesController < ApplicationController
   end
 
   def ask_llm_for_json
-    @ruby_llm_chat = RubyLLM.chat.with_instructions(instructions_for_josn)
-    build_conversation_history
+    chat_json = RubyLLM.chat.with_instructions(instructions_for_json)
+    build_conversation_history_json(chat_json)
+
+    chat_json.ask("Create the outfit based on our conversation.").content
   end
 
   def broadcast_replace(message)
