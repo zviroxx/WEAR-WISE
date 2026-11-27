@@ -20,7 +20,7 @@
     </div>
   </div>
   <% if user_signed_in? == false %>
-    <div class="d-flex lg-4 row align-items-start bg-white border-3 container mt-3 p-3" style="border-radius: 10px; margin-left:20px;">
+    <div class="d-flex lg-4 row align-items-start bg-white border-3 w-100 mt-3 p-3" style="border-radius: 10px; margin-left:20px;">
       <%= render "devise/sessions/form", resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
     </div>
   <% else %>
